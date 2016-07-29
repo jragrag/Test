@@ -1,0 +1,115 @@
+﻿@using System.Configuration
+<!DOCTYPE html>
+@{
+    Layout = "";
+    string currentUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/";
+}
+<html lang="en" ng-app="pricingCentral">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+
+    <title>Pricing Central</title>
+    <link href="~/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="~/Content/angular-material/angular-material.min.css" rel="stylesheet" />
+    <link href="~/Content/auto-complete.css" rel="stylesheet" />
+    <link href="~/Content/common.css" rel="stylesheet" />
+    <link href="~/Content/client.css" rel="stylesheet" />
+    <link href="~/Content/client-mobile.css" rel="stylesheet" />
+    <link href="~/Content/ngProgress.css" rel="stylesheet" />
+
+    <!-- libraries -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/angular-mocks.js"></script>
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/angular-sanitize.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/angular-aria.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/smart-table.min.js"></script>
+    <script src="~/Scripts/checklist-model.js"></script>
+    <script src="~/Scripts/clamp.js"></script>
+    <script src="~/Scripts/underscore.js"></script>
+    <script src="~/Scripts/ng-infinite-scroll.js"></script>
+    <script src="~/Scripts/ngprogress.min.js"></script>
+
+    <!--App files-->
+    <script src="~/App/app.js"></script>
+    <script src="~/App/config.js"></script>
+    <!--Directives/Services-->
+    <script src="~/Common/common.js"></script>
+    <script src="~/Common/Services/MockService.js"></script>
+    <script src="~/Common/Services/LookupService.js"></script>
+    <script src="~/Common/Directives/CommonDirectives.js"></script>
+    <script src="~/Common/Filters/CommonFilters.js"></script>
+    <script src="~/Common/Constants/CommonConstants.js"></script>
+    <script src="~/App/Home/HomeCtrl.js"></script>
+    <script src="~/App/Services/HomeService.js"></script>
+    <script src="~/App/Services/ModalService.js"></script>
+    <script src="~/App/Services/ClientService.js"></script>
+    <script src="~/App/Services/RelatedClientService.js"></script>
+    <script src="~/App/RelatedClient/RelatedClientCtrl.js"></script>
+    <script src="~/App/Client/ClientCtrl.js"></script>
+    <script src="~/App/Services/UserService.js"></script>
+    <script src="~/Scripts/MorganLewis/AcuteJsonPatch.js"></script>
+    <script src="~/Scripts/MorganLewis/MorganLewis.Tools.Json.js"></script>
+
+    
+
+    <script>
+        (function () {
+            window.baseUiUrl = "@currentUrl"; 
+            window.baseApiUrl = "@ConfigurationManager.AppSettings["baseApiUri"]";
+            window.imageUrl = "@ConfigurationManager.AppSettings["imageUrl"]";
+            window.personUrl = "@ConfigurationManager.AppSettings["personUrl"]";
+            window.practiceGroupUrl = "@ConfigurationManager.AppSettings["practiceGroupUrl"]";
+            window.officeUrl = "@ConfigurationManager.AppSettings["officeUrl"]";
+            window.billingGuidelinesUrl = "@ConfigurationManager.AppSettings["billingGuidelinesUrl"]";
+            window.morganViewUrl = "@ConfigurationManager.AppSettings["morganViewUrl"]";
+            window.morganNetUrl = "@ConfigurationManager.AppSettings["morganNetUrl"]";
+        }());
+    </script>
+</head>
+<body ng-init="getCurrentUser()">
+    <!-- Navbar branding -->
+    <nav class="navbar navbar-default ml-top-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="/#/"><img class="ml-top-nav-image" src="~/Images/MLPricingLogo.png" /></a>
+            </div>
+        </div>
+    </nav>
+    <div id="mainView" autoscroll="false" ui-view></div>
+    @*<div ng-show="isLoading">
+        @*<img src="~/Images/ajaxloader.gif" class="loading" />
+
+    </div>*@
+
+    <div class="loading" ng-show="isLoading">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+
+</body>
+</html>

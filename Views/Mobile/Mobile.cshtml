@@ -1,0 +1,140 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="container-fluid">
+    <!--Search Box-->
+    <div class="ml-search-textbox-container" ng-init="getAutoComplete()">
+        <input type="search" name="mlSearchTextBox" placeholder="Search" class="ml-search-textbox" ng-model="selectedSearchText"
+               uib-typeahead="airplane as airplane.registration for airplane in airplanes | filter:$viewValue  | limitTo:3"
+               typeahead-template-url="app/areas/common/autocomplete.html">
+        <button type="submit" class="ml-search-bar-icon-holder">
+            <img src="app/images/icon-search-black-24.png" class="img-responsive" style="width:20px;">
+        </button>
+    </div>
+    <!--Refinements Section-->
+    <div class="ml-refinement">
+        <span id="ml-refinement-header-text" ng-click="showRefiner=!showRefiner">
+            <span class="glyphicon glyphicon-filter"></span>Refinements
+        </span>
+        <span class="ml-content-resultcount-text pull-right">{{ResultCount}}</span>
+        <div class="ml-refinement-section" ng-show="showRefiner">
+            <div class="ml-refinement-header-container"><a href="" ng-click="SaveDefaultFilters()">Save As Default</a> <a href="" class="default" ng-click="SetToDefaultFilters()">Apply Default</a> <a href="" class="reset" ng-click="ResetFilters()">Reset All</a></div>
+            <hr class="ml-refinement-hr" />
+            <div class="ml-refinement-container" ng-init="isCollapsedPracticeGroup=false" ng-repeat="refiner in refinersToFilter() | filter:filterRefiners">
+                <div class="subcontainer" ng-model="isCollapsedPracticeGroup" ng-click="isCollapsedPracticeGroup=!isCollapsedPracticeGroup"><strong>{{refiner.Group}}</strong><span class="glyphicon glyphicon-chevron-up" style="float: right;" ng-show="isCollapsedPracticeGroup"></span><span class="glyphicon glyphicon-chevron-down" style="float: right;" ng-show="!isCollapsedPracticeGroup"></span></div>
+                <div class="subcontainer" ng-show="isCollapsedPracticeGroup">
+                    <div style="text-align: right"><a href="" class="clear" ng-click="Clear(refiner.Group)">Clear</a></div>
+                    <div ng-repeat="item in Refiners | filter:{Group: refiner.Group}">
+                        <input type="checkbox" ng-model="item.IsSelected" ng-checked="item.IsSelected"><span class="text">{{item.Name}}</span><span class="count">({{item.Count | number:0}})</span>
+                    </div>
+                </div>
+                <hr class="ml-refinement-hr" />
+            </div>
+        </div>
+    </div>
+    <!--Tabs Container-->
+    <div class="ml-filter-tabs-container" ng-init="InitTabs()">
+        <a href="" ng-class="{'selected' : isEverythingTab, '' : !isEverythingTab}" data-ng-click="FilterTabChanged('E')">EVERYTHING</a>
+        <a href="" ng-class="{'selected' : isRelatedClientTab, '' : !isRelatedClientTab}" data-ng-click="FilterTabChanged('R')">RELATED CLIENT</a>
+        <a href="" ng-class="{'selected' : isClientTab, '' : !isClientTab}" data-ng-click="FilterTabChanged('C')">CLIENT</a>
+    </div>
+    <!--Results Container-->
+    <div class="ml-searchresult-container" ng-repeat="result in Results">
+        <!--Related Client Tab-->
+        <div class="ml-searchresult-relatedclient" ng-if="result.ClientType == 'R' " ng-show="isEverythingTab || isRelatedClientTab">
+            <div class="ml-searchresult-relclient-bar"> </div>
+            <div class="ml-searchresult-relclient-content">
+
+                <div class="ml-searchresult-relclient-subcontainer">
+                    <span class="ml-searchresult-relclient-plate">Related Client</span>
+                    <a href="/#/relatedclient" class="ml-searchresult-clientname-link">{{result.ClientName}}</a>
+                    <span class="ml-searchresult-relclient-number">{{result.ClientId}}</span>
+                </div>
+                <div class="ml-searchresult-relclient-subcontainer">
+                    <div style="width:88px">
+                        <div class="ml-searchresult-photo-container">
+                            <img src="https://www.morganlewis.com/~/media/person images/abramowitz_robert_02402_desktop.ashx" alt="" />
+                        </div>
+                    </div>
+                    <div class="ml-searchresult-cradetails-container">
+                        <table class="ml-searchresult-cradetails-table">
+                            <tr>
+                                <td>
+                                    <span style="font-weight: bold;">CRA:</span>
+                                    <a href="/#/" class="ml-searchresult-cra-link" data-ng-click=""><b>{{result.ResposibleAttorney.FullName}}</b></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Group}}</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Location}}</a></td>
+                            </tr>
+                            <tr>
+                                <td><span>{{result.ResposibleAttorney.ContactNumber}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Email}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="ml-searchresult-relclient-agreement-text" ng-init="limit=335;isMinimize=false;">
+                        <p>{{(result.AgreementText.length > limit ? (result.AgreementText | limitTo: limit) + ' ...' : result.AgreementText)}}</p>
+                        <a href="" class="ml-searchresult-minimize-link" ng-click="limit=isMinimize ? 335: result.AgreementText.length ;isMinimize = !isMinimize" ng-show="result.AgreementText.length >= limit">{{isMinimize ? 'Minimize' : 'See Additional Details'}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Client Tab-->
+        <div class="ml-searchresult-client" ng-if="result.ClientType == 'C' " ng-show="isEverythingTab || isClientTab">
+            <div class="ml-searchresult-client-content">
+                <div class="ml-searchresult-relclient-subcontainer">
+                    <span class="ml-searchresult-client-plate">Client</span>
+                    <a href="/#/client" class="ml-searchresult-clientname-link">{{result.ClientName}}</a>
+                    <span class="ml-searchresult-relclient-number">{{result.ClientId}}</span>
+                </div>
+                <div class="ml-searchresult-relclient-subcontainer">
+                    <div>
+                        <div class="ml-searchresult-photo-container">
+                            <img src="app/images/photos/richard.rosenblatt.PNG" alt="" />
+                        </div>
+                    </div>
+                    <div class="ml-searchresult-cradetails-container">
+                        <table class="ml-searchresult-cradetails-table">
+                            <tr>
+                                <td>
+                                    <span style="font-weight: bold;">RA</span><span>&nbsp;</span>
+                                    <a href="/#/" class="ml-searchresult-cra-link" data-ng-click=""><b>{{result.ResposibleAttorney.FullName}}</b></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Group}}</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Location}}</a></td>
+                            </tr>
+                            <tr>
+                                <td><span>{{result.ResposibleAttorney.ContactNumber}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Email}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="ml-searchresult-client-agreement-text" ng-init="limit=100;isMinimize=false;">
+                        <p>{{(result.AgreementText.length > limit ? (result.AgreementText | limitTo: limit) + ' ...' : result.AgreementText)}}</p>
+                        <a href="" class="ml-searchresult-minimize-link" ng-click="limit=isMinimize ? 100: result.AgreementText.length ;isMinimize = !isMinimize" ng-show="result.AgreementText.length >= limit">{{isMinimize ? 'Minimize' : 'See Additional Details'}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr ng-show="(isEverythingTab || isClientTab) && $last " ng-if="result.ClientType == 'C' " />
+    </div>
+</div>
+
+
+
+

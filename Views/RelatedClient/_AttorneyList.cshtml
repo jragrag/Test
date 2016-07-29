@@ -1,0 +1,7 @@
+﻿<span class="ml-txt-3 hidden-xs">RESPONSIBLE ATTORNEYS</span>
+<div class="ml-attorney profile-summary" ng-repeat="row in client.ResponsibleAttorney">
+    <div>
+        <span class="ml-txt-7">{{row.NameDisplay}}</span>
+        <a id="rel-cli-count-{{$index}}" href="" ng-click="vm.searchClientByAttorney(row)" class="pull-right">{{vm.getClientCount(row.ClientCount)}}</a>
+    </div>
+</div>

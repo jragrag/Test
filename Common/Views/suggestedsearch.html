@@ -1,0 +1,31 @@
+﻿<div class="ml-auto-complete-container">
+    <div class="ml-search-people-title" ng-if="match.model.Group === 'Responsible Attorney'  && match.model.Index === 0">Attorneys</div>
+    <div class="ml-auto-profiles" ng-if="match.model.Group === 'Responsible Attorney'">
+        <a href="" class="ml-auto-profile"">
+
+            <img class="ml-attorney ml-profile-photo ml-auto-profile-pic image-replacement" src="{{getImageUrl(match.model.PictureURL)}}" alt="Image Not Found" on-error-src="Images/no-img.jpg" />
+            <div class="ml-auto-profile-summary">
+                <div>
+                    <div bind-html-unsafe="match.model.Name | typeaheadHighlight:query"></div>
+                    <div bind-html-unsafe="match.model.MarsTitle"></div>
+                    <div bind-html-unsafe="match.model.ContactNumber"></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="ml-search-people-title" ng-if="match.model.Group === 'Related Client' && match.model.Index === 0">Related Clients</div>
+    <div class="ml-search-clients" ng-if="match.model.Group === 'Related Client'">
+        <a href="javascript:;" class="ml-search-client">
+            <div bind-html-unsafe="match.model.Name | typeaheadHighlight:query"></div>
+            <div bind-html-unsafe="match.model.Key | typeaheadHighlight:query"></div>
+        </a>
+    </div>
+    <div class="ml-search-people-title" ng-if="match.model.Group === 'Client ' && match.model.Index === 0">Clients</div>
+    <div class="ml-search-clients" ng-if="match.model.Group === 'Client '">
+        <a href="javascript:;" class="ml-search-client">
+            <div bind-html-unsafe="match.model.Name | typeaheadHighlight:query"></div>
+            <div bind-html-unsafe="match.model.Key | typeaheadHighlight:query"></div>
+        </a>
+    </div>
+</div>
+

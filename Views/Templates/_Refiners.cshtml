@@ -1,0 +1,108 @@
+﻿<div class="ml-refinement-header-container text-center">
+    <a id="save-as-default" href="" class="margin-right" ng-click="vm.saveAsDefaultFilters()">Save As Default</a>
+    <a id="apply-default" href="" class="margin-right" ng-click="vm.setToDefaultFilters()">Apply Default</a>
+    <a id="reset-all" href="" ng-click="vm.resetFilters()">Reset All</a>
+</div>
+<md-content id="selected-filter-container">
+    <div class="ml-refinement-container" ng-repeat="group in vm.refinerGroups()" id="refiner-grp-{{$index}}">
+        <div class="subcontainer"><strong>{{group}}</strong></div>
+        <hr class="ml-refinement-hr" />
+        <div class="subcontainer">
+            <div ng-repeat="item in selectedRefiners | filter:{Group: group} ">
+                <div class="text">{{item.Name}}</div><span id="remove-filter-{{$index}}" class="glyphicon glyphicon-remove pull-right" ng-click="vm.removeFilter(item)"></span>
+            </div>
+        </div>
+    </div>
+</md-content>
+
+<!-- Related Client -->
+<div id="rel-cli-refiner-con" class="ml-refinement-container" ng-hide="vm.recordCount(constants.RELATEDCLIENT_CLIENTTYPE) == 0 && hasResults">
+    <hr class="ml-refinement-hr" />
+    <div class="subcontainer" ng-model="isCollapsedRelatedClient" ng-click="isCollapsedRelatedClient=!isCollapsedRelatedClient">Related Client<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedRelatedClient"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedRelatedClient"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedRelatedClient">
+        <input id="relatedClientAutocomplete" class="form-control" placeholder="Type to see matches and select" ng-model="relatedClientSearchText" typeahead-on-select="vm.selectedItemChanged($item)"
+               typeahead="name as Autocomplete.Name for Autocomplete in vm.autocompleteSource($viewValue,constants.RELATEDCLIENT_REFINERGROUP)"
+               typeahead-wait-ms="500" typeahead-min-length="0" ng-blur="relatedClientSearchText = null" typeahead-focus-first="false" />
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+<!-- Client -->
+<div id="cli-refiner-con" class="ml-refinement-container" ng-hide="vm.recordCount(constants.CLIENT_CLIENTTYPE) == 0 && hasResults">
+    <div class="subcontainer" ng-model="isCollapsedClient" ng-click="isCollapsedClient=!isCollapsedClient">Client<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedClient"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedClient"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedClient">
+        <input id="clientAutocomplete" class="form-control" placeholder="Type to see matches and select" ng-model="clientSearchText" typeahead-on-select="vm.selectedItemChanged($item)"
+               typeahead="name as Autocomplete.Name for Autocomplete in vm.autocompleteSource($viewValue,constants.CLIENT_REFINERGROUP)"
+               typeahead-wait-ms="500" typeahead-min-length="0" ng-blur="clientSearchText = null" typeahead-focus-first="false" />
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+<!-- Coordinating RA -->
+<div id="coo-ra-refiner-con" class="ml-refinement-container" ng-hide="vm.recordCount(constants.RELATEDCLIENT_CLIENTTYPE) == 0 && hasResults">
+    <div class="subcontainer" ng-model="isCollapsedCoordinatingRA" ng-click="isCollapsedCoordinatingRA=!isCollapsedCoordinatingRA">Coordinating RA<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedCoordinatingRA"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedCoordinatingRA"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedCoordinatingRA">
+        <input id="coordinatingRAAutocomplete" class="form-control" placeholder="Type to see matches and select" ng-model="coordinatingRASearchText" typeahead-on-select="vm.selectedItemChanged($item)"
+               typeahead="name as Autocomplete.Name for Autocomplete in vm.autocompleteSource($viewValue,constants.COORDINATINGRA_REFINERGROUP)"
+               typeahead-wait-ms="500" typeahead-min-length="0" ng-blur="coordinatingRASearchText = null" typeahead-focus-first="false" />
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+<!-- Responsible Attorney -->
+<div id="res-att-refiner-con" class="ml-refinement-container" ng-hide="vm.recordCount(constants.CLIENT_CLIENTTYPE) == 0 && hasResults">
+    <div class="subcontainer" ng-model="isCollapsedResponsibleAttorney" ng-click="isCollapsedResponsibleAttorney=!isCollapsedResponsibleAttorney">Responsible Attorney<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedResponsibleAttorney"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedResponsibleAttorney"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedResponsibleAttorney">
+        <input id="responsibleAttorneyAutocomplete" class="form-control" placeholder="Type to see matches and select" ng-model="responsibleAttorneySearchText" typeahead-on-select="vm.selectedItemChanged($item)"
+               typeahead="name as Autocomplete.Name for Autocomplete in vm.autocompleteSource($viewValue,constants.RESPONSIBLEATTORNEY_REFINERGROUP)"
+               typeahead-wait-ms="500" typeahead-min-length="0" ng-blur="responsibleAttorneySearchText = null" typeahead-focus-first="false" />
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+<!-- Practice Group -->
+<div id="prac-grp-refiner-con" class="ml-refinement-container" ng-init="isPracticeGroupLoading=false">    
+    <div class="subcontainer" ng-model="isCollapsedPracticeGroup" ng-click="isCollapsedPracticeGroup=!isCollapsedPracticeGroup; vm.filterSource(constants.PRACTICEGROUP_REFINERGROUP)">Practice Group<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedPracticeGroup"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedPracticeGroup"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedPracticeGroup">
+        <img src="~/Images/small-loading.gif" ng-show="isPracticeGroupLoading" alt="Loading ..." />
+        <div class="text-right"><a href="" class="clear" ng-hide="isPracticeGroupLoading" ng-click="vm.clearRefinerGroup(constants.PRACTICEGROUP_REFINERGROUP)">Clear</a></div>
+        <div ng-repeat="item in Refiners | filter:{Group: 'Practice Group'}" ng-hide="isPracticeGroupLoading">
+            <input class="ml-refinement-checkbox" type="checkbox" ng-model="item.IsSelected" ng-checked="item.IsSelected" ng-click="vm.refinersOnChange(item)" ><div class="text">{{item.Name}}</div><span class="count">({{item.Count | number:0}})</span>
+        </div>
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+
+<!-- Industry -->
+<div id="ind-refiner-con" class="ml-refinement-container" ng-init="isIndustryLoading=false">
+    <div class="subcontainer" ng-model="isCollapsedIndustry" ng-init="" ng-click="isCollapsedIndustry=!isCollapsedIndustry; vm.filterSource(constants.INDUSTRY_REFINERGROUP)">Industry<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedIndustry"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedIndustry"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedIndustry">
+        <img src="~/Images/small-loading.gif" ng-show="isIndustryLoading" alt="Loading ..." />
+        <div class="text-right"><a href="" class="clear" ng-hide="isIndustryLoading" ng-click="vm.clearRefinerGroup(constants.INDUSTRY_REFINERGROUP)">Clear</a></div>
+        <div ng-repeat="item in Refiners | filter:{Group: 'Industry'}" ng-hide="isIndustryLoading">
+            <input class="ml-refinement-checkbox" type="checkbox" ng-model="item.IsSelected" ng-checked="item.IsSelected" ng-click="vm.refinersOnChange(item)"><div class="text">{{item.Name}}</div><span class="count">({{item.Count | number:0}})</span>
+        </div>
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+
+<!-- Sector -->
+<div id="sec-refiner-con" class="ml-refinement-container" ng-init="isSectorLoading=false">
+    <div class="subcontainer" ng-model="isCollapsedSector" ng-click="isCollapsedSector=!isCollapsedSector; vm.filterSource(constants.SECTOR_REFINERGROUP)">Sector<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedSector"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedSector"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedSector">
+        <img src="~/Images/small-loading.gif" ng-show="isSectorLoading" alt="Loading ..." />
+        <div class="text-right"><a href="" class="clear" ng-hide="isSectorLoading" ng-click="vm.clearRefinerGroup(constants.SECTOR_REFINERGROUP)">Clear</a></div>
+        <div ng-repeat="item in Refiners | filter:{Group: 'Sector'}" ng-hide="isSectorLoading">
+            <input class="ml-refinement-checkbox" type="checkbox" ng-model="item.IsSelected" ng-checked="item.IsSelected" ng-click="vm.refinersOnChange(item)"><div class="text">{{item.Name}}</div><span class="count">({{item.Count | number:0}})</span>
+        </div>
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>
+
+<!-- Status -->
+<div id="sta-refiner-con" class="ml-refinement-container" ng-init="isStatusLoading=false">
+    <div class="subcontainer" ng-model="isCollapsedStatus" ng-click="isCollapsedStatus=!isCollapsedStatus; vm.filterSource(constants.STATUS_REFINERGROUP)">Status<span class="glyphicon glyphicon-chevron-up pull-right" ng-show="isCollapsedStatus"></span><span class="glyphicon glyphicon-chevron-down pull-right" ng-show="!isCollapsedStatus"></span></div>
+    <div class="subcontainer" ng-show="isCollapsedStatus">                
+        <img src="~/Images/small-loading.gif" ng-show="isStatusLoading" alt="Loading ..." />        
+        <select class="form-control" ng-hide="isStatusLoading" ng-model="selectedStatus" ng-change="vm.refinerStatusChanged(selectedStatus)">
+            <option ng-repeat="item in Refiners | filter:{Group: 'Status'}">{{item.Name}}</option>
+        </select>
+    </div>
+    <hr class="ml-refinement-hr" />
+</div>

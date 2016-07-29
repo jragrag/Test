@@ -1,0 +1,55 @@
+﻿{
+    "Refiners": [
+      {
+        "Group": "Status",
+        "Name": "Active",
+        "Count": 0,
+        "IsSelected": true
+      },
+      {
+        "Group": "Status",
+        "Name": "Inactive",
+        "Count": 0,
+        "IsSelected": false
+      },
+      {
+        "Group": "Industry",
+        "Name": "",
+        "Count": 0,
+        "IsSelected": false
+      },
+      {
+        "Group": "Sector",
+        "Name": "",
+        "Count": 0,
+        "IsSelected": false
+      },
+      {
+        "Group": "Practice Group",
+        "Name": "",
+        "Count": 0,
+        "IsSelected": false
+      },
+      {
+        "Group": "Coordinating RA",
+        "Name": "",
+        "Count": 0,
+        "IsSelected": false
+      },
+      {
+        "Group": "Responsible Attorney",
+        "Name": "",
+        "Count": 0,
+        "IsSelected": false
+      },
+      {
+        "Group": "Related Client",
+        "Name": "",
+        "Count": 0,
+        "IsSelected": false
+      } 
+    ],
+    "Results": [],
+    "RelatedClientCount": 0,
+    "ClientCount": 0
+  }

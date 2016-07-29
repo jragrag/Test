@@ -1,0 +1,106 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="container-fluid">
+    <!--Search Box-->
+    <form class="form-inline ml-search-bar" action="" method="post">
+        <div class="ml-search-textbox-container" ng-init="getAutoComplete()">
+            <input type="search" name="mlSearchTextBox" placeholder="Search" class="ml-search-textbox" ng-model="selectedSearchText"
+                   uib-typeahead="airplane as airplane.registration for airplane in airplanes | filter:$viewValue  | limitTo:3"
+                   typeahead-template-url="app/areas/common/autocomplete.html">
+            <button type="submit" class="ml-search-bar-icon-holder">
+                <img src="app/images/icon-search-black-24.png" class="img-responsive" style="width:20px;">
+            </button>
+        </div>
+    </form>
+
+    <!-- Quick Links  -->
+    <div>
+        <span class="ml-title"><a href="#">Create a PDF Version</a></span>
+        <span class="ml-title pull-right"><a href="#">Back to Search Results</a></span>
+    </div>
+
+
+    <uib-accordion close-others="oneAtATime" id="ml-client-accordion">
+        <uib-accordion-group is-open="status.open1">
+            <uib-accordion-heading>
+                <i class="glyphicon" ng-class="{'glyphicon-minus': status.open1, 'glyphicon-plus': !status.open1}"></i> Client Details
+            </uib-accordion-heading>
+            <div class="ml-sub-content-container">
+                <!-- Client Name  -->
+                <div class="ml-client-name">
+                    Acme Ball Bearings, Anvils and Pianos
+                </div>
+                <!-- Client Details  -->
+                <div class="row">
+                    <div class="col-sm-6 ml-txt-1 ml-client-sub-details">
+                        <div>09467304</div>
+                        <div><a href="#">094673RC</a></div>
+                    </div>
+                    <div class="col-sm-6 text-right ml-txt-2 ml-detail-link">
+                        <div><a href="#">MorganNet Page</a></div>
+                        <div><a href="#">Morgan View</a></div>
+                        <div><a href="#">Billing Guidelines</a></div>
+                    </div>
+                </div>
+            </div>
+        </uib-accordion-group>
+        <uib-accordion-group is-open="status.open2">
+            <uib-accordion-heading>
+                <i class="glyphicon" ng-class="{'glyphicon-minus': status.open2, 'glyphicon-plus': !status.open2}"></i> RESPONSIBLE ATTORNEY
+            </uib-accordion-heading>
+            <div class="ml-sub-content-container">
+                <!-- Responsible Attorney-->
+                <div class="ml-responsible-attorney">
+                    <span class="ml-attorney ml-profile-photo ml-square-container-md" style="background-image: url('app/images/photos/richard.rosenblatt.png');">
+                        <a href="app/images/photos/richard.rosenblatt.png"></a>
+                    </span>
+                    <div class="ml-attorney profile-summary">
+                        <div><span class="ml-txt-1">Richard Rosenblatt</span></div>
+                        <div class="ml-partner ml-txt-4">
+                            <span class="ml-txt-5">Partner</span>
+                            <div><a href="#" class="text-uppercase">Labor and Employment</a></div>
+                            <div><i class="fa fa-level-up" aria-hidden="true"></i><a href="#" class="text-uppercase">lbr-indev emp lit. counsel </a></div>
+                            <div><a href="#">Princeton</a></div>
+                            <div><a href="#">richard.rosenblatt@morganlewis.com</a></div>
+                            <div><span class="glyphicon glyphicon-phone-alt"></span><a href="#">231.6609</a></div>
+                            <div><span class="glyphicon glyphicon-phone"></span><a href="#">+1.215.963.1234</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-accordion-group>
+        <uib-accordion-group is-open="status.open3">
+            <uib-accordion-heading>
+                <i class="glyphicon" ng-class="{'glyphicon-minus': status.open3, 'glyphicon-plus': !status.open3}"></i> ASSOCIATED CLIENTS
+            </uib-accordion-heading>
+            <div class="ml-sub-content-container">
+                <!-- Associated Clients-->
+                <div class="ml-attorney profile-summary">
+                    <div><a href="#">Acme Murals</a></div>
+                    <div><a href="#">Acme Parachutes</a></div>
+                    <div><a href="#">Acme Propulsion</a></div>
+                    <div><a href="#">Acme Roller Skates</a></div>
+                </div>
+            </div>
+        </uib-accordion-group>
+        <uib-accordion-group is-open="status.open4">
+            <uib-accordion-heading>
+                <i class="glyphicon" ng-class="{'glyphicon-minus': status.open4, 'glyphicon-plus': !status.open4}"></i> PRICING AGREEMENT
+            </uib-accordion-heading>
+            <div class="ml-sub-content-container">
+                <!-- Pricing Agreement  -->
+                <div class="ml-sub-content-container">
+                    <div class="ml-pricing-agreement">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                        <br><br>
+                        Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+                    </div>
+                </div>
+            </div>
+        </uib-accordion-group>
+    </uib-accordion>
+</div>
+

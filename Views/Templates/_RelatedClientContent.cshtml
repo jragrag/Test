@@ -1,0 +1,51 @@
+﻿<div class="ml-searchresult-relclient-content" id="rel-cli-item-{{$index}}">
+    <div class="ml-searchresult-relclient-subcontainer">
+        <span class="ml-searchresult-relclient-plate">Related Client</span>
+        <span class="visible-xs ml-searchresult-relclient-number">{{row.ClientNumber}}</span>
+        <a id="rel-cli-name-link" href="" ng-click="vm.getClient(row.ClientNumber, row.Type)" class="ml-searchresult-relclientname-link">{{row.ClientName}}</a>
+        <span class="hidden-xs ml-searchresult-relclient-number">{{row.ClientNumber}}</span>
+    </div>
+    <div class="ml-searchresult-relclient-subcontainer">
+        <div>
+            <div class="ml-searchresult-photo-container">
+                <img class="img-responsive image-replacement" src="{{getImageUrl(row.Attorney.PictureURL)}}" alt="Image Not Found" on-error-src="Images/no-img.jpg" />
+            </div>
+        </div>
+        <div class="ml-searchresult-cradetails-container">
+            <table class="ml-searchresult-cradetails-table" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <span style="font-weight: bold; float: left;">CRA</span>
+                        <div class="ml-item-box"></div>
+                        <a id="rel-cli-emp-id" href="{{getPersonUrl(row.Attorney.EmployeeId)}}" class="ml-searchresult-cra-link" target="_blank"><b>{{row.Attorney.NameDisplay}}</b></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a id="rel-cli-pra-grp" href="{{getPracticeGroupUrl(row.Attorney.PracticeGroup.PracticeGroupName)}}" class="ml-searchresult-cra-link ml-txt-4" target="_blank">{{row.Attorney.PracticeGroup.PracticeGroupName}}</a></td>
+                </tr>
+                <tr>
+                    <td><a id="rel-cli-off-lnk" href="{{getOfficeUrl(row.Attorney.BusinessPrimaryOfficeCity)}}" class="ml-searchresult-cra-link ml-txt-4" target="_blank">{{row.Attorney.BusinessPrimaryOfficeCity}}</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="ml-txt-4">
+                            {{row.Attorney.BusinessPrimaryOfficePhoneInternalOfficeNumberFull}}
+                            {{row.Attorney.BusinessPrimaryOfficePhoneInternalOfficeNumberFull.length > 0 && row.Attorney.BusinessPrimaryOfficePhoneNumberFull.length > 0 ? ' / ': ''}}
+                            <a id="rel-cli-pho-lnk" href="{{getCallNumberUrl(row.Attorney.BusinessPrimaryOfficePhoneNumberFull)}}" class="ml-searchresult-cra-link ml-font-10" target="_blank">{{row.Attorney.BusinessPrimaryOfficePhoneNumberFull}}</a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a id="rel-cli-eml-lnk" href="{{'mailto:' + row.Attorney.Email}}" class="ml-searchresult-cra-link ml-txt-4" target="_blank">{{row.Attorney.Email}}</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="ml-searchresult-client-agreement-text">
+            <p class="text-justify">{{row.RelatedClientExecutiveSummary}}</p>
+        </div>  
+        <div class="ml-searchresult-performance-container">
+            <a href="" class="ml-searchresult-minimize-link" ng-click="vm.showAgreementPerformance(row); showMetrics=true;" ng-show="!showMetrics">Agreement Performance</a>
+        </div>    
+    </div>
+</div>
+

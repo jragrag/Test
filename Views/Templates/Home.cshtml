@@ -1,0 +1,65 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="container-fluid">
+    <div class="row" ng-init="vm.initilizePage()">
+        <div class="col-sm-4">
+            <div class="hidden-xs margin-80">
+                <div><span class="ml-refinement-header-text">REFINEMENTS</span></div><br />
+                @{ Html.RenderPartial("_Refiners"); }
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <!-- Search Bar -->
+            <div class="ml-landing-search">
+                @{ Html.RenderPartial("_SearchBox"); }
+            </div>
+            <!--Refinements Section-->
+            <div class="ml-refinement visible-xs">
+                <span id="ml-refinement-header-text" ng-click="showRefiner=!showRefiner">
+                    <span class="glyphicon glyphicon-filter"></span>Refinements
+                </span>
+                <span class="ml-content-resultcount-text pull-right">{{vm.getResultCount()}}</span>
+                <div class="ml-refinement-section" ng-show="showRefiner">
+                    @{ Html.RenderPartial("_Refiners"); }
+                </div>
+            </div>
+            <div class="ml-filter-tabs-container" ng-init="vm.initTabs()">
+                <a id="all-tab" href="javascript:;" ng-disabled="!hasResults || isNoResult" ng-class="{ 'disabled' : !hasResults || isNoResult, 'selected' : isAllTab, '' : !isAllTab}" data-ng-click="vm.filterTabChanged()">ALL</a>
+                <a id="rel-cli-tab" href="javascript:;" ng-disabled="!hasResults || isNoResult || (vm.recordCount(constants.RELATEDCLIENT_CLIENTTYPE) < 1)" ng-class="{ 'disabled' : !hasResults || isNoResult || (vm.recordCount(constants.RELATEDCLIENT_CLIENTTYPE) < 1), 'selected' : isRelatedClientTab, '' : !isRelatedClientTab}" data-ng-click="vm.filterTabChanged(constants.RELATEDCLIENT_CLIENTTYPE)">RELATED CLIENTS</a>
+                <a id="cli-tab" href="javascript:;" ng-disabled="!hasResults || isNoResult || (vm.recordCount(constants.CLIENT_CLIENTTYPE) < 1)" ng-class="{ 'disabled' : !hasResults || isNoResult || (vm.recordCount(constants.CLIENT_CLIENTTYPE) < 1), 'selected' : isClientTab, '' : !isClientTab}" data-ng-click="vm.filterTabChanged(constants.CLIENT_CLIENTTYPE)">CLIENTS</a>
+            </div>
+            <div class="ml-content-resultcount-text hidden-xs" ng-show="hasResults">{{vm.getResultCount()}}</div>
+            <div class="ml-content-no-resultcount-text" ng-show="isNoResult">{{resultMessage}}</div>
+            <div infinite-scroll='vm.loadMoreCards()' infinite-scroll-distance='2' id="infinite-scroll">
+                <div class="ml-searchresult-container" ng-repeat="row in lazyResults" id="search-result-{{$index}}">
+                    <div class="ml-searchresult-relatedclient" ng-if="row.Type == constants.RELATEDCLIENT_CLIENTTYPE " ng-show="isAllTab || isRelatedClientTab">
+                        <div class="ml-searchresult-relclient-bar"> </div>
+                        @{ Html.RenderPartial("_RelatedClientContent"); }
+                        @{ Html.RenderPartial("_HomePerformanceMetrics"); }
+                    </div>
+                    <div class="ml-searchresult-client" ng-if="row.Type == constants.CLIENT_CLIENTTYPE " ng-show="isAllTab || isClientTab">
+                        @{ Html.RenderPartial("_ClientContent"); }
+                        @{ Html.RenderPartial("_HomePerformanceMetrics"); }
+                    </div>
+                    <hr ng-show="(isAllTab || isClientTab) && $last" ng-if="row.Type == constants.CLIENT_CLIENTTYPE " />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="columnTwo.html">
+    <table class="">
+        <tr>
+            <td>
+                <div ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
+                    <a id="select-{{$index}}">{{ match.model.id }} - {{ match.model.text }}</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>

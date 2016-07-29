@@ -1,0 +1,11 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="ml-attorney profile-summary">
+    <span class="ml-txt-3 hidden-xs">Associated Clients</span>
+    <div ng-repeat="row in client.AssociatedClients">
+        <a href="" ng-click="vm.getAssociatedClient(row.ClientNumber)">{{row.ClientNameDisplay}}</a>
+    </div>
+</div>

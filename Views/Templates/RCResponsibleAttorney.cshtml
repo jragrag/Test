@@ -1,0 +1,34 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="ml-responsible-attorney">
+    <div class="ml-txt-6 ml-coord-attorney hidden-xs">Coordinating Responsible Attorney</div>
+    <span class="ml-attorney ml-profile-photo ml-square-container-md">
+        <img class="img-responsive image-replacement" src="{{getImageUrl(client.CoordinatingResponsibleAttorney.PictureURL)}}" alt="Image Not Found" on-error-src="Images/no-img.jpg" />
+    </span>
+    <div class="ml-attorney profile-summary">
+        <div><span class="ml-txt-1"><a href="{{getPersonUrl(client.CoordinatingResponsibleAttorney.EmployeeId)}}" target="_blank">{{client.CoordinatingResponsibleAttorney.NameDisplay}}</a></span></div>
+        <div class="ml-partner ml-txt-4">
+            <span class="ml-txt-5">{{client.CoordinatingResponsibleAttorney.MarsTitle}}</span>
+            <div><a href="{{getPracticeGroupUrl(client.CoordinatingResponsibleAttorney.PracticeGroup.PracticeGroupName)}}" class="text-uppercase">{{client.CoordinatingResponsibleAttorney.PracticeGroup.PracticeGroupName}}</a></div>
+            <div>
+                <i class="fa fa-level-up" aria-hidden="true" ng-hide="{{isEmpty(client.CoordinatingResponsibleAttorney.PracticeGroup.SubSubPracticeGroupName)}}"></i><a href="#" class="text-uppercase">{{client.CoordinatingResponsibleAttorney.PracticeGroup.SubSubPracticeGroupName}}, {{client.CoordinatingResponsibleAttorney.MarsTitle}}</a>
+            </div>
+            <div><a href="{{getOfficeUrl(client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficeCity)}}">{{client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficeCity}}</a></div>
+            <div><a href="{{'mailto:' + client.CoordinatingResponsibleAttorney.Email}}">{{client.CoordinatingResponsibleAttorney.Email}}</a></div>
+            <div>
+                <span class="glyphicon glyphicon-phone-alt" ng-hide="{{isEmpty(client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneInternalOfficeNumberFull) && isEmpty(client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneNumberFull)}}"></span>
+                <a href="{{getCallNumberUrl(client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneInternalOfficeNumberFull)}}">{{client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneInternalOfficeNumberFull}}</a>
+                <span ng-hide="{{isEmpty(client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneNumberFull)}}">
+                    (<a href="{{getCallNumberUrl(client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneNumberFull)}}">{{client.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneNumberFull}}</a>)
+                </span>
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-phone" ng-hide="{{isEmpty(client.CoordinatingResponsibleAttorney.CellPhoneNumberFull)}}"></span>
+                <a href="{{getCallNumberUrl(client.CoordinatingResponsibleAttorney.CellPhoneNumberFull)}}">{{client.CoordinatingResponsibleAttorney.CellPhoneNumberFull}}</a>
+            </div>
+        </div>
+    </div>
+</div>

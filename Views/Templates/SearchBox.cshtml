@@ -1,0 +1,20 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<form class="form-inline ml-search-bar" action="" method="post">
+    <div class="ml-search-textbox-container">
+        <input type="search" placeholder="Search" class="ml-search-textbox" ng-model="searchText">
+        <button type="submit" class="ml-search-bar-icon-holder" ng-click="">
+            <img src="~/Images/icons/search.png" class="img-responsive" style="width:20px;">
+        </button>
+    </div>
+</form>
+
+<!-- Quick Links  -->
+<div>
+    <span class="ml-title"><a href="#">Create PDF Version</a></span>
+    <span class="ml-title pull-right"><a href="" ng-click="vm.backToSearchResults()">Back to Search Results</a></span>
+</div>

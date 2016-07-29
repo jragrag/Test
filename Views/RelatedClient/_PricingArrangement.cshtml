@@ -1,0 +1,23 @@
+﻿
+<div class="ml-sub-content-container">
+    <span class="ml-txt-3 hidden-xs">AGREEMENT DETAILS AT CLIENT LEVEL</span>
+    <table class="ml-client-list-container">
+        <thead class="ml-related-header">
+            <tr>
+                <th>Agreement</th>
+                <th>Client Number - Responsible Attorney</th>
+            </tr>
+
+        </thead>
+        <tr ng-repeat="pricing in pricingIdNumbers | orderBy: '-ClientCount'">                    
+            <td class="ml-pricing-arrangement">{{pricing.AgreementText}}</td>
+            <td>
+                <div class="ml-client-ra-number">
+                    <div ng-repeat="row in client.PricingDetail | filter: { PricingIdNumber: pricing.PricingIdNumber } | orderBy: 'ClientNumber'">
+                        <a href="" ng-click="vm.suggestedClientOnSelect(row.ClientNumber, constants.CLIENT_CLIENTTYPE)">{{row.ClientNumber}} - {{row.AttorneyLastName}}</a>                        
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,332 @@
+﻿/*#region boostrap*/
+.navbar {
+    margin-bottom: 0px;
+}
+.nav-submenu-btn, .nav-submenu-btn:hover{
+	display: inline-block;
+	background-color:black;
+	position: relative;
+	border: none;
+	color: white;
+	margin: 10px 5px 10px 10px;
+	width: 70px;
+}
+.nav-submenu-btn:focus {
+	background: black !important;
+	color: white !important;
+}
+.xs-sub-menu-list {
+	    
+	display: inline-block;
+}
+.xs-sub-menu-list ul{
+	padding-left: 50px;
+}
+.xs-sub-menu-list li{
+	padding: 6px;
+}
+.xs-sub-menu-list button {
+	width: 100%;
+	margin: 0;
+	border: none;
+	text-align: left;
+    text-transform: uppercase;
+    color: rgb(52,152,219);
+}
+.xs-sub-menu-list button:hover {
+	background: none;
+}
+.xs-sub-menu-list button:active {
+    border-left: solid #5c3380 5px !important;
+	background: transparent !important;
+	outline: 0 !important;
+	box-shadow: none !important;
+    color: black;
+}
+.xs-sub-menu-list button:focus {
+	background: transparent;
+	border-left: solid #5c3380 5px;
+	outline: 0;
+}
+
+@media only screen and (max-width :  768px) {
+	 .xs-sub-menu-list {
+ 		 background:#fff;
+         border-right: gray solid thick;
+		 position: absolute;
+		 height: 100%;
+ 		 z-index: 2;
+         width : 40%
+	 }
+
+     .content {
+         margin: 10px;
+     }
+}
+
+.showSideNav{
+	display: block !important;
+}
+/*#endregion bootstrap*/
+
+hr.padded-line {
+    margin: 50px 0;
+    display: block;
+    border: 0;
+    border-top: 3px solid #ccc;
+    padding: 0;
+}
+.bottom-border>h3{
+    margin-bottom: -10px;
+    border-bottom: 2px solid black;
+}
+.child-padding {
+    padding-left: 45px;
+}
+.summary-container{ padding: 20px 0;}
+/*Sidebar navigation*/
+ul li {list-style-type:none;}
+ul li button.md-button {width:200px;color:#222222;}
+.menuBtn {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px 0 0 16px;
+  width: 36px;
+}
+md-toolbar h1 {
+  font-weight: normal;
+}
+md-list .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+.active-tab {
+  border-style: solid;
+  border-left: thick solid #5c3380 !important;
+}
+
+/*Logo*/
+.logo {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url("../Images/Logo.svg");  
+  height: 17px;
+  width:130px;
+}
+
+/*Content*/
+.big-wrapper {z-index: 1;}
+#content {padding: 20px; width: 896px;}
+#content form { max-width: 860px;padding: 0 15px;}
+#content form > div {margin: 20px 0;}
+#content form label {display: block}
+#content form .row { margin: 0;}
+#content form .row div button {vertical-align: bottom; margin:5px}
+#content form .row > div:nth-last-child(n+2){
+    padding-right: 10px;
+    padding-left: 0;
+}
+
+/**Button style*/
+button.action{ padding: 15px;width: 256px;margin: 0 10px 10px 0;}
+input[type="button"].action{ padding: 15px;width: 256px;margin: 0 10px 10px 0;}
+
+/**Icons*/
+.print {
+    background: #fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATJQTFRFEBAQEBEQEREREhISExMTExQTFBQUFRUVFhYWFhcWFxcXFxgXGhoaGhsaGxsbGxwbHBwcHB0cHh4eHx8fHyAfICEgISIhIiIiIiMiIyQjJCUkJSUlJSYlJiYmJicm6+/qHBwcHR0d6+/q6+/q6+/q6+/q6+/q6+/qHyAfMjMyIiIil5qWJycnMzQzHR0dHh8eHyAfICAgISIhIiMiIyMjIyQjJCQkJCUkJSUlJSYlJiYmJicmJygnKCkoKSopKisqKysrKywrLC0sLS0tLS4tLi8uLzAvMDEwMTExMTIxMjMyMzQzNDU0NTY1NjY2Njc2Nzg3ODk4OTo5Ojs6Ozw7PDw8PD08PT49Pj8+QEFAQkNCQ0RDREVERUZFRkdGc3Vzdnh2f4F+gYOAmp2azdDM6+/qErz45AAAAC50Uk5TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbJydjaYqNmai45Ovv+rDGq90AAAFrSURBVDjLrZO/SwNBEIXf7M2dl0urqAENIlhYiGjv320lWAgWChJECaIYRUyRyiLGZHeexebHmTutnOZg38e3w82stD8AJLsplmvyGABAAQDZWlEBhq+fESAAbeQVgMqFgWQViEfRUA/wPwG/WsnR9AQAaUvuiizVCuAn46GNBuqaGytOUFe0r75ovlVofQ4wT59V86Smw2kluWrLGX4v11IH4i9C+WcOqhmAsFGT9RMAFg3j083lH+Hf9/M4UwMQfLY875EPFq8gAJMKYBKT2IPRLGyX4pfEGJPYA0mGu9E8zxuOcZrTHkia7ZcMj0bGRGVmYGcyz9OCU4NoazADDkqGhxnQ0s66mwI3NQbr6Kj9LDCa8bBk6JrRDNzpqb84YWCX5HVYjLlJck8SOX9T9M5cAk/jcclwb/SXCPbmFZOeOGZGXpUMBS08iZFUkAhIAckWm+MEoC+9LNAo2c+FnT+9OJqjyjrcxs83QYT1WLFjkIIAAAAASUVORK5CYII=') /*../Images/icons/print.png*/ no-repeat left top;
+    width: 32px;
+    height: 32px;    
+}
+/*Smart Table Grids!1!*/
+thead > tr > th.st-sort-ascent, thead > tr > th.st-sort-descent {
+    border-style: solid;
+    border-bottom: thick solid #ff8b2a;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding-bottom: 4px;
+}
+ .st-sort-ascent:after{
+    content: '\25B2';
+  }
+
+  .st-sort-descent:after{
+    content: '\25BC';
+  }
+
+  .st-selected{
+    background-color: #dbf5ff !important;
+    color: #000;
+}
+.pagination { cursor: pointer;}  
+table.table {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    margin-bottom: 5px; 
+}
+
+table * {
+    box-sizing: inherit;
+    -moz-box-sizing: inherit;    
+}
+
+thead {
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    align-items: stretch;
+}
+thead tr th[st-sort] {
+    cursor: pointer;
+}
+thead tr th>input[type='checkbox'] {
+  margin: 5px 10px 0 20px;
+  float: left;
+  position: relative;
+}
+tbody {
+    overflow-y: auto;
+    overflow-y: overlay;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    display: block;
+}
+
+.table thead > tr, .table > tbody > tr, .table tfoot > tr {
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+.table-striped > tbody > tr:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+.table-striped > tbody > tr.st-selected:hover{
+    background-color: #c0edff !important;
+    color: #000;
+}
+thead, tfoot {
+    flex-shrink: 0;
+}
+
+th, .table>tbody>tr>td {
+    width: 100%;  
+    overflow-x: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+th, .table>tbody>tr>td.detail-container {
+    white-space: normal;
+}
+
+tfoot {
+    display: inline-block;
+}
+  /**footer*/
+  footer ul li {
+      font-size: 8pt;
+  }
+  /* test styles
+  .ng-dirty.ng-valid {
+      border: 1px solid green;
+  }
+
+  
+  .ng-dirty.ng-invalid {
+      border: 1px solid red;
+  }
+      */
+  /*Mix ins*/
+  md-toast { position: fixed;}
+  .md-select-label { min-width: 250px;}
+  /**Breadcrumbs*/
+  .breadcrumbs {
+	/*centering*/
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 5px;
+	/*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+	counter-reset: flag; 
+}
+
+.breadcrumbs a {
+	text-decoration: none;
+	outline: none;
+	display: block;
+	float: left;
+	font-size: 12px;
+	line-height: 36px;
+	color: black;
+	/*need more margin on the left of links to accomodate the numbers*/
+	padding: 0 10px 0 60px;
+	background: rgb(238,238,238);
+	position: relative;
+}
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.breadcrumbs a:first-child {
+	padding-left: 46px;
+	border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+}
+.breadcrumbs a:first-child:before {
+	left: 14px;
+}
+.breadcrumbs a:last-child {
+	border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+	padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumbs a.active, .breadcrumbs a:hover{
+	background: #666;
+    color:white;
+}
+.breadcrumbs a.active:after, .breadcrumbs a:hover:after {
+	background: #666;
+}
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.breadcrumbs a:after {
+	content: '';
+	position: absolute;
+	top: 0; 
+	right: -18px; /*half of square's length*/
+	/*same dimension as the line-height of .breadcrumb a */
+	width: 36px; 
+	height: 36px;
+	/*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+	length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+	if diagonal required = 1; length = 1/1.414 = 0.707*/
+	transform: scale(0.707) rotate(45deg);
+	/*we need to prevent the arrows from getting buried under the next link*/
+	z-index: 1;
+	/*background same as links but the gradient will be rotated to compensate with the transform applied*/
+	background: rgb(238,238,238);
+	/*stylish arrow design using box shadow*/
+	box-shadow: 
+		2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+		3px -3px 0 2px rgba(255, 255, 255, 0.1);
+	/*
+		5px - for rounded arrows and 
+		50px - to prevent hover glitches on the border created using shadows*/
+	border-radius: 0 5px 0 50px;
+}
+/*we dont need an arrow after the last link*/
+.breadcrumbs a:last-child:after {
+	content: none;
+}
+
+
+
+

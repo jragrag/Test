@@ -1,0 +1,440 @@
+﻿.ml-client-name {
+    min-height: 40px;
+    text-transform: uppercase;
+    font-size: 25px;
+    word-wrap: break-word;
+}
+
+.ml-pricing-agreement {
+    border: 1px solid #DDD;
+    margin-top: 5px;
+    padding: 5px 7px 5px 7px;
+}
+
+.ml-profile-photo > a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.ml-square-container-md {
+    width: 110px;
+    height: 140px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.ml-profile-photo {
+    float: left;
+    background-position: center center;
+    background-size: cover;
+    margin-right: 15px;
+}
+
+.ml-partner {
+    padding-top: 22px;
+    word-break: break-word;
+}
+
+.break-all {
+    word-break: break-all;
+    display: block;
+}
+
+span.glyphicon {
+    padding-right: 5px;
+}
+
+.ml-form-control.ml-txt-4 {
+    font-size: 12px;
+}
+
+.ml-client-list-container {
+    margin-top: 5px;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .ml-client-list-container td, .ml-client-list-container th {
+        border: 1px solid black;
+        vertical-align: top;
+        font-weight: normal;
+        padding: 10px;
+        width: 50%;
+    }
+
+.ml-related-header {
+    background-color: #452660;
+    color: WHITE;
+    text-align: center;
+}
+
+.ml-client-ra-number {
+    column-count: 2;
+}
+
+.ml-detail {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.fa-level-up {
+    transform: rotate(90deg);
+    padding-right: 5px;
+    padding-top: 0px;
+    vertical-align: bottom;
+}
+
+.ml-responsible-attorneys {
+    width: 30%;
+}
+
+.hide-details {
+    position: absolute;
+    visibility: hidden;
+}
+
+.image-replacement {
+    padding-left: 87px;
+    height: 80px;
+    background: #333 url('/Images/no-img.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.ml-morgan-link {
+    margin-top: -5px;
+}
+
+/* Large Devices in General*/
+@media(min-width: 1200px) {
+    .ml-responsible-attorney .ml-attorney.profile-summary {
+        margin-left: 125px;
+    }
+
+    .ml-attorney.profile-summary span.ml-txt-7 {
+        width: 75%;
+        display: inline-block;
+    }
+}
+
+
+/* Medium Devices in General*/
+@media(max-width: 1199px) and (min-width: 992px) {
+    .col-sm-4 {
+        width: 40%;
+    }
+
+    .col-sm-8 {
+        width: 60%;
+    }
+
+    .ml-responsible-attorney .ml-attorney.profile-summary {
+        margin-left: 125px;
+    }
+
+    .ml-client-ra-number {
+        column-count: 1;
+    }
+
+    .margin-right {
+        margin-right: 18px;
+    }
+
+    .ml-attorney.profile-summary span.ml-txt-7 {
+        width: 70%;
+        display: inline-block;
+    }
+
+    .ml-landing-search, .ml-filter-tabs-container {
+        width: 51.5%;
+    }
+
+    .ml-perf-met-container:first-child {
+        margin-right: 15px;
+    }
+}
+
+/* 1025px ++ Devices in General*/
+@media(max-width: 1199px) and (min-width: 1025px) {
+    .ml-landing-search, .ml-filter-tabs-container {
+    }
+}
+
+/* Small Devices in General*/
+@media(max-width: 991px) and (min-width: 768px) {
+    .container-fluid {
+        max-width: 90%;
+    }
+
+    .ml-searchresult-clientname-link, .ml-searchresult-relclientname-link {
+        width: 58%;
+    }
+
+    .ml-searchresult-client-agreement-text {
+        display: inline-block;
+    }
+
+    .ml-filter-tabs-container a:link {
+        font-size: 20px;
+    }
+
+    .ml-refinement-header-container a {
+        display: block;
+        text-align: left;
+    }
+
+    .ml-refinement-container div.subcontainer {
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+
+    .ml-refinement-container {
+        margin: 10px 0px;
+    }
+
+    .ml-txt-2 {
+        font-size: 11px;
+    }
+
+    .ml-txt-6 {
+        font-size: 13px;
+    }
+
+    .ml-txt-7 {
+        font-size: 12px;
+    }
+
+    .ml-responsible-attorney .ml-attorney.profile-summary {
+        margin-left: 95px;
+    }
+
+    .ml-square-container-md {
+        width: 80px;
+        height: 100px;
+    }
+
+    .ml-client-ra-number {
+        column-count: 1;
+    }
+
+    .ml-relatedclient-block {
+        font-size: 10px;
+    }
+
+    .ml-attorney.profile-summary span.ml-txt-7 {
+        width: 70%;
+        display: inline-block;
+    }
+
+    .ml-client-name {
+        min-height: 30px;
+    }
+
+    .ml-landing-search, .ml-filter-tabs-container {
+        width: 53.7%;
+    }
+
+    .ml-searchresult-client-agreement-text {
+        min-height: inherit;
+    }
+
+    .ml-perf-met-container:first-child {
+        margin-right: 10px;
+    }
+}
+
+/* Tablet in General*/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .ml-txt-1, .ml-detail {
+        font-size: 14px;
+    }
+
+    .ml-txt-4 {
+        font-size: 8px;
+    }
+
+    .ml-txt-5 {
+        font-size: 10px;
+    }
+
+    .ml-refinement-header-container > a {
+        display: block;
+        text-align: left;
+    }
+
+    .ml-client-ra-number {
+        column-count: 1;
+    }
+
+    .ml-client-name {
+        min-height: 30px;
+    }
+}
+
+/* Tablet Landscape Specific*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    .container-fluid {
+        max-width: 85%;
+    }
+
+    .ml-client-name {
+        font-size: 20px;
+    }
+
+    .ml-txt-2 {
+        font-size: 10px;
+    }
+
+    .ml-txt-6 {
+        font-size: 13px;
+        text-transform: uppercase;
+        font-family: Tahoma;
+    }
+
+    .ml-square-container-md {
+        width: 100px;
+        height: 120px;
+    }
+
+    .ml-refinement-header-container .default {
+        margin-left: 5px;
+    }
+
+    .ml-filter-tabs-container a {
+        font-size: 20px;
+    }
+
+    .ml-searchresult-clientname-link, .ml-searchresult-relclientname-link {
+        width: 58%;
+    }
+
+    .ml-responsible-attorney .ml-attorney.profile-summary {
+        margin-left: 115px;
+    }
+}
+
+/* Tablet Portrait Specific*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .container-fluid {
+        max-width: 90%;
+    }
+
+    .col-sm-4 {
+        width: 40%;
+    }
+
+    .col-sm-8 {
+        width: 60%;
+    }
+
+    .ml-client-name {
+        font-size: 16px;
+    }
+
+    .ml-txt-2 {
+        font-size: 11px;
+    }
+
+    .ml-txt-3 {
+        font-size: 17px;
+    }
+
+    .ml-txt-4 {
+        font-size: 11px;
+    }
+
+    .ml-landing-search, .ml-filter-tabs-container {
+        width: 50.5%;
+    }
+
+    .ml-profile-photo {
+        margin-right: 5px;
+    }
+
+    .ml-partner {
+        padding-top: 10px;
+        word-break: break-all;
+    }
+
+    .ml-square-container-md {
+        width: 90px;
+        height: 120px;
+    }
+
+    .ml-searchresult-client-agreement-text {
+        display: inline-block;
+        padding-left: 0px;
+    }
+
+        .ml-searchresult-client-agreement-text a:link {
+        }
+
+    .ml-filter-tabs-container a {
+        font-size: 18px;
+    }
+
+    .ml-refinement-header-text {
+        font-size: 14px;
+    }
+
+    .ml-refinement-header-container .default {
+        margin-left: 10px;
+    }
+
+    .ml-refinement-container {
+        font-size: 12px;
+    }
+
+    .ml-searchresult-relclient-agreement-text a:link {
+        top: 0px;
+    }
+
+    .ml-searchresult-relclient-agreement-text {
+        padding-bottom: 20px;
+    }
+
+    .ml-refinement-header-container {
+        font-size: 13px;
+    }
+
+    .ml-filter-tabs-container a:link {
+        font-size: 15px;
+    }
+
+    .ml-pdf-container .ml-square-container-md {
+        margin-bottom: 45px;
+        margin-right: 15px;
+    }
+
+    .ml-searchresult-clientname-link, .ml-searchresult-relclientname-link {
+        width: 190px;
+    }
+
+    .ml-responsible-attorney .ml-attorney.profile-summary {
+        margin-left: 100px;
+    }
+
+    .show-date-when-needed {
+        display: block;
+    }
+
+    .ml-perf-met-container:first-child {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 880px) {
+    .show-date-when-needed {
+        display: block;
+    }
+
+    .ml-perf-met-container:first-child {
+        margin-bottom: 20px;
+    }
+
+    div.ml-perf-met-container.text-center {
+        width: 100%;
+    }
+}

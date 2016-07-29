@@ -1,0 +1,380 @@
+﻿@model PracticeStrategy.PricingCentral.UI.Models.ClientModel
+@using System.Configuration
+<!DOCTYPE html>
+@{
+    Layout = "";
+    string currentUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/";
+    string personUrl = ConfigurationManager.AppSettings["personUrl"];
+}
+
+<html>
+<head>
+    <style>
+        .container-fluid {
+            margin: 15px;
+            padding: 5px;
+        }
+
+        .ml-top-nav {
+            height: 60px;
+            padding: 10px 0;
+            border-radius: 0;
+            margin-bottom: 20px;
+            border-color: #93D8F7;
+            background-color: #93D8F7;
+        }                        
+
+        .ml-top-nav-image {
+            width: 300px;
+            vertical-align: middle;
+            border: none;
+            margin-top: 10px;
+        }
+
+        hr {
+            margin: 10px 0px;
+        }
+
+        .col-lg-9, .col-lg-3 {
+            display: inline-block;
+        }
+
+        .col-lg-9 {
+            width: 80%;
+        }
+
+            .col-lg-9 h1 {
+                margin-top: -8px;
+            }
+
+        .ml-relatedclient-block {
+            background-color: #452660;
+            color: WHITE;
+            padding: 5PX 10PX;
+            display: INLINE;
+        }
+
+        .margin-10 {
+            margin: 5px;
+        }
+
+        .ml-txt-18 {
+            font-size: 18px;
+        }
+
+        .ml-txt10 {
+            font-size: 30px;
+        }
+
+        .ml-header-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .ml-attorney.ml-profile-photo.ml-square-container-md img.image-replacement {
+            padding-left: 100%;
+            height: 100%;
+        }
+
+        .image-replacement {
+            padding-left: 87px;
+            height: 80px;
+            background: #333 url('@currentUrl/Images/no-img.jpg') no-repeat center;
+            background-size: cover;
+        }
+
+        .ml-square-container-md {
+            width: 110px;
+            height: 160px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .ml-profile-photo {
+            float: left;
+            background-position: center center;
+            background-size: cover;
+            margin-right: 15px;
+        }
+
+        .ml-sub-content-container {
+            padding: 0px 15px;
+        }
+
+        .pull-right {
+            float: right;
+        }
+
+        @@font-face {
+          font-family: 'Glyphicons Halflings';
+
+          src: url('@currentUrl/fonts/glyphicons-halflings-regular.eot');
+          src: url('@currentUrl/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('@currentUrl/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('@currentUrl/fonts/glyphicons-halflings-regular.woff') format('woff'), url('@currentUrl/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('@currentUrl/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+        }
+        .glyphicon {
+          position: relative;
+          top: 1px;
+          display: inline-block;
+          font-family: 'Glyphicons Halflings';
+          font-style: normal;
+          font-weight: normal;
+          line-height: 1;
+
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        .glyphicon-phone-alt:before {
+          content: "\e183";
+        }
+        .glyphicon-phone:before {
+          content: "\e145";
+        }
+
+        @@font-face{
+        font-family:'FontAwesome';
+        src:url('@currentUrl/fonts/fontawesome-webfont.eot?v=4.6.2');src:url('@currentUrl/fonts/fontawesome-webfont.eot?#iefix&v=4.6.2') format('embedded-opentype'),url('@currentUrl/fonts/fontawesome-webfont.woff2?v=4.6.2') format('woff2'),url('@currentUrl/fonts/fontawesome-webfont.woff?v=4.6.2') format('woff'),url('@currentUrl/fonts/fontawesome-webfont.ttf?v=4.6.2') format('truetype'),url('@currentUrl/fonts/fontawesome-webfont.svg?v=4.6.2#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale
+        }
+
+        .fa-level-up:before{content:"\f148"}
+        .fa-long-arrow-right:before{content:"\f178"}
+
+        .fa-long-arrow-right {
+            padding-right: 5px;
+        }
+
+        .fa-level-up {
+            transform: rotate(90deg);
+            padding-right: 5px;
+            padding-top: 0px;
+            vertical-align: bottom;
+        }
+
+        .ml-client-list-container, .ml-relclient-list-container {
+            width: 60%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        .ml-relclient-list-container {
+            width: 100%;
+        }
+
+        .ml-client-list-container td, .ml-client-list-container th, .ml-relclient-list-container td, .ml-relclient-list-container th {
+            border: 1px solid black;
+            vertical-align: top;
+            font-weight: normal;
+            padding: 10px;
+        }
+        .ml-client-list-container th{
+            border: 1px solid white;
+        }
+
+        .ml-relclient-list-container td{
+            width: 50%;
+        }
+
+        .ml-assoc-clients td{
+            padding: 5px 30px 5px 0px;
+        }
+
+        .ml-related-header, ml-relatedclient-header {
+            background-color: black;
+            color: WHITE;
+            text-align: center;
+        }
+
+        .ml-relatedclient-header {
+            background-color: #452660;;
+            color: WHITE;
+            text-align: left;
+        }
+        
+        .pad-right{
+            padding-right: 15px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>Related Client PDF</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Navbar branding -->
+        <nav class="navbar navbar-default ml-top-nav ml-sub-content-container">
+            <div class="navbar-header">
+                <img class="ml-top-nav-image" src="@currentUrl/Images/MLPricingLogo.png" />
+            </div>
+        </nav>
+
+        <!--Client Details Summary-->
+        <div class="ml-pdf-container">
+            <div class="ml-sub-content-container">
+                <div class="col-lg-9">
+                    <h1>@Model.RelatedClientName</h1>
+                    <div class="ml-header-title">COORDINATING RESPONSIBLE ATTORNEY</div>
+                    <div class="ml-responsible-attorney">
+                        <span class="ml-attorney ml-profile-photo ml-square-container-md">
+                            <img class="img-responsive" src="@personUrl+Model.CoordinatingResponsibleAttorney.PictureURL" alt="Image Not Found" />
+                        </span>
+                        <div class="ml-attorney profile-summary">
+                            <div><span class="ml-txt-18">@Model.CoordinatingResponsibleAttorney.NameDisplay</span></div>
+                            <div class="ml-partner ml-txt-4">
+                                <span class="ml-txt-5">@Model.CoordinatingResponsibleAttorney.MarsTitle</span>
+                                <div><span class="text-uppercase">@Model.CoordinatingResponsibleAttorney.PracticeGroup.PracticeGroupName</span></div>
+                                <div><i class="fa fa-long-arrow-right" aria-hidden="true"></i><span class="text-uppercase">@Model.CoordinatingResponsibleAttorney.MarsSubSubPracticeGroup</span></div>
+                                <div><span>@Model.CoordinatingResponsibleAttorney.BusinessPrimaryOfficeCity</span></div>
+                                <div><span>@Model.CoordinatingResponsibleAttorney.Email</span></div>
+                                <div>
+                                    <span class="glyphicon glyphicon-phone-alt"></span>
+                                    <span>@Model.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneInternalOfficeNumberFull  (@Model.CoordinatingResponsibleAttorney.BusinessPrimaryOfficePhoneNumberFull)</span>
+                                </div>
+                                <div>
+                                    <span class="glyphicon glyphicon-phone"></span>
+                                    <span>@Model.CoordinatingResponsibleAttorney.CellPhoneNumberFull</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 pull-right">
+                    <div class="ml-txt10 pull-right">@Model.RelatedClientNumber</div>
+                    <div class="margin-10">
+                        <span class="ml-relatedclient-block pull-right">RELATED CLIENT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <!-- Agreement Performance-->
+        <div class="ml-pdf-container">
+            <div class="ml-sub-content-container">
+                <div class="ml-header-title">AGREEMENT PERFORMANCE</div>
+
+                <table class="ml-client-list-container">
+                    <thead class="ml-related-header">
+                        <tr>
+                            <th>Fiscal Year</th>
+                            <th>TCS's @@ Standard</th>
+                            <th>TCS's Booked</th>
+                            <th>Revenue*</th>
+                            <th>Discount on Rates*</th>
+                            <th>Effective Discount*</th>
+                        </tr>
+
+                    </thead>
+                    <tr>
+                        <td>2014</td>
+                        <td>$24,000,789</td>
+                        <td>$24,123,000</td>
+                        <td>$24,014,012</td>
+                        <td>12%</td>
+                        <td>10%</td>
+                    </tr>
+
+                    <tr>
+                        <td>2015</td>
+                        <td>$24,000,789</td>
+                        <td>$24,123,000</td>
+                        <td>$24,014,012</td>
+                        <td>12%</td>
+                        <td>10%</td>
+                    </tr>
+
+                    <tr>
+                        <td>2016</td>
+                        <td>$24,000,789</td>
+                        <td>$24,123,000</td>
+                        <td>$24,014,012</td>
+                        <td>12%</td>
+                        <td>10%</td>
+                    </tr>
+                </table>
+
+                <div>
+                    <strong>*Revenue</strong> - Based on RR for currentFY. Past FYs based on actual collections.
+                </div>
+                <div>
+                    <strong>*Discount on Rates</strong> - Comparison of TCBs Booked to TCBs at Standard Rates.
+                </div>
+                <div>
+                    <strong>*Effective Discount</strong> - Comparison of Revenue vs. TCBs at Standard.
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <!-- Agreement Summary-->
+        <div class="ml-pdf-container">
+            <div class="ml-sub-content-container">
+                <div class="ml-pdf-header">AGREEMENT SUMMARY</div>
+                <div>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                    <br><br>
+                    Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <!-- Agreement Details -->
+        <div class="ml-pdf-container">
+            <div class="ml-sub-content-container">
+                <div class="ml-header-title">AGREEMENT PERFORMANCE</div>
+                <table class="ml-relclient-list-container">
+                    <thead class="ml-relatedclient-header">
+                        <tr>
+                            <th>Pricing Arrangement</th>
+                            <th>Client Number - Responsible Attorney</th>
+                        </tr>
+
+                    </thead>
+                    <tr>
+                        <td class="ml-pricing-arrangement">Acme Ball Bearings is a full-service manufacturing partner to leading OEMs. Our customers choose Acme Industries to act as their manufacturing partner because of our superior ability to optimize supply chain and technical support for machined parts, assemblies and components.Acme’s team of experts works with every customer to develop creative solutions for their particular manufacturing challenge.You’ll get all the benefits of vertical integration, without tying up your people, capital and attention. Our customers choose Acme Industries to act as their manufacturing partner because of our superior ability to optimize supply chain and technical support for machined parts, assemblies and components.Acme’s team of experts works with every customer to develop creative solutions for their particular manufacturing challenge.You’ll get all the benefits of vertical integration, without tying up your people, capital and attention. Acme Industries is a full - service manufacturing partner to leading OEMs.Our customers choose Acme Industries to act as their manufacturing partner because of our superior ability to optimize supply chain and technical support for machined parts, assemblies and components.Acme’s team of experts works with every customer to develop creative solutions for their particular manufacturing challenge.You’ll get all the benefits of vertical integration, without tying up your people, capital and attention.</td>
+                        <td>
+                            <div class="col-lg-3 pad-right">
+                                <div> 0123214 - Ashdown .</div>
+                                <div> 9121232 - Coulson </div>
+                                <div> 0123214 - Garrettson</div>
+                                <div> 9121232 - Kynaston</div>
+                                <div> 0123214 - Leduc</div>
+                                </div>
+                            <div class="col-lg-3 pad-right">
+                                <div> 9121232 - Noon </div>
+                                <div> 0123214 - Shoffner</div>
+                                <div> 9121232 - Stolarik</div>
+                                <div> 0123214 - Tutt</div>
+                                <div> 9121232 - Umphlett </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="ml-pricing-arrangement">2016 Standard Rates</td>
+                        <td>
+                            <div class="ml-client-ra-number">
+                                <div> 0123214 - Eunice</div>
+                                <div> 9121232 - Kitzmiller</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="ml-pricing-arrangement">Full-service manufacturing partner to leading OEMs. Our customers choose Acme Industries to act as their manufacturing partner because of our superior ability to optimize supply chain and technical support for machined parts, assemblies and components.Acme’s team of experts works with every customer to develop creative solutions for their particular.</td>
+                        <td>
+                            <div class="ml-client-ra-number">
+                                <div> 0123214 - Eunice</div>
+                                <div> 9121232 - Kitzmiller</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+ </div>
+
+</body>
+</html>
+    

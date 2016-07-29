@@ -1,0 +1,21 @@
+﻿
+<div id="search-container" class="ml-search-textbox-container">
+    <input id="search-box" type="search" placeholder="Search" class="ml-search-textbox" ng-model="searchText"
+           ng-keyup="$event.which === 13 && vm.searchOnClick(searchText)"
+           typeahead-on-select="vm.suggestedOnSelect($item)" typeahead-append-to-body="true"
+           typeahead="name as SuggestedSearch.Name for SuggestedSearch in vm.getSuggestedSearches($viewValue)"
+           typeahead-wait-ms="500" typeahead-min-length="3" typeahead-editable="true" typeahead-focus-first="false"
+           typeahead-template-url="Common/Views/suggestedsearch.html" />
+
+    <button id="search-btn" type="submit" class="ml-search-bar-icon-holder" ng-click="vm.searchOnClick(searchText)">
+        <img src="~/Images/icons/search.png" class="img-responsive" style="width:20px;">
+    </button>
+</div>
+<!-- Monkey Patch  -->
+<input type="hidden" ng-model="searchText" />
+<!-- Quick Links  -->
+<div class="ml-quick-links row" id="quick-links">
+    <div class="ml-title col-xs-4"><a id="create-pdf-link" href="" ng-click="vm.createPdfVersion()">Create PDF Version</a></div>
+    <div class="ml-title col-xs-4 text-center"><a id="metric-info-link" href="" ng-click="vm.getListOfMetricInfo()">Metrics Info</a></div>
+    <div class="ml-title col-xs-4 text-right"><a id="back-to-search" href="" ng-click="vm.backToSearchResults()">Back to Results</a></div>
+</div>

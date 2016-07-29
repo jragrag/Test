@@ -1,0 +1,321 @@
+﻿@media (max-width: 767px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container-fluid {
+        max-width: 100%;
+    }
+
+    div.container-fluid .navbar-header {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .ml-detail-link {
+        display: inline-block;
+        float: right;
+    }
+
+    .ml-detail {
+        display: inline-block;
+    }
+
+    .ml-txt-4 {
+        font-size: 12px;
+    }
+
+    .ml-profile-photo {
+    }
+
+    .ml-profile-summary{
+        padding-left: 100px;
+    }
+
+    .ml-filter-tabs-container a {
+        font-size: 16px;
+        margin-right: 25px;
+    }
+
+    .ml-content-resultcount-text {
+        margin: 0px;
+    }
+
+    .ml-refinement {
+        padding: 10px 0px;
+    }
+
+    .ml-refinement-section {
+        padding-top: 10px;
+    }
+
+    .ml-searchresult-client-agreement-text {
+        padding: 10px 0px 0px 10px;
+        display: inline-block;
+    }
+
+    .ml-client-sub-details {
+        display: inline-block;
+    }
+
+    .ml-heading:active {
+        color: #5C3380;
+    }
+
+    #ml-client-accordion .panel-heading {
+        padding: 0px;
+        border: none;
+        background: none;
+    }
+
+        #ml-client-accordion .panel-heading a {
+            padding: 10px 15px 0px 15px;
+            display: block;
+            outline: none;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: Tahoma;
+            font-size: 18px;
+            transition: all ease-in-out 0.2s;
+            font-weight: bold;
+        }
+
+            #ml-client-accordion .panel-heading a:active, #ml-client-accordion .panel-heading a:focus {
+                color: #5C3380;
+            }
+
+    #ml-client-accordion .panel-group {
+        margin-top: 5px;
+    }
+
+        #ml-client-accordion .panel-group .panel {
+            border: none;
+            border-bottom: 2px solid #000;
+            border-radius: 0px;
+            margin: 0px -15px;
+            padding: 10px 0px 20px;
+        }
+
+    #ml-client-accordion .panel-default > .panel-heading + .panel-collapse > .panel-body {
+        border: none;
+        padding-bottom: 0px;
+    }
+
+    .ml-sub-content-container {
+        padding: 0px 15px;
+    }
+
+    .ml-client-name {
+        min-height: 20px;
+        font-size: 14px;
+    }
+
+    .ml-txt-1 {
+        font-size: 14px;
+    }
+
+    .ml-square-container-md {
+        width: 80px;
+        height: 110px;
+    }
+
+    .ml-refinement-section {
+        opacity: 1;
+    }
+
+        .ml-refinement-section.ng-hide-add, .ml-refinement-section.ng-hide-remove {
+            transition: all ease-in-out 0.5s;
+        }
+
+        .ml-refinement-section.ng-hide {
+            opacity: 0;
+        }
+
+    .ml-filter-tabs-container a:link {
+        font-size: 15px;
+    }
+
+    .ml-detail {
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .ml-relatedclient-name {
+        font-size: 18px;
+    }
+
+    .ml-pdf-header {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .ml-pdf-container {
+        padding-bottom: 20px;
+    }
+
+    .ml-searchresult-cradetails-container {
+        margin-left: 2px;
+        width: auto;
+        margin-right: 0px;
+    }
+
+    .ml-responsible-attorneys {
+        width: 100%;
+    }
+
+    .ml-responsible-attorney {
+        padding-top: 15px;
+    }
+
+    .ml-searchresult-client-agreement-text a:link {
+        top: 0px;
+    }
+
+    .ml-auto-profile .ml-profile-photo {
+        margin-bottom: 0px;
+    }
+
+    .ml-auto-complete-container {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .ml-searchresult-clientname-link, ml-searchresult-relclientname-link{
+        margin-left: 0px;
+        width: auto;
+    }
+
+    .ml-searchresult-relclient-subcontainer > a{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .ml-searchresult-relclient-plate, .ml-searchresult-client-plate {
+        vertical-align: top;
+    }
+
+    .ml-searchresult-clientname-link, .ml-searchresult-relclientname-link{
+        width: 260px;
+    }   
+    
+    .ml-client-ra-number {
+        column-count: 1;
+    }
+
+    .margin-20{
+        margin: 0px;
+    }
+
+    .ml-morgan-link{
+
+    }
+
+    .ml-auto-profile-summary{
+        max-width: calc(100% - 90px);
+    }
+
+    .ml-landing-search, .ml-filter-tabs-container{
+        width: 96%;
+    }
+
+    .sk-fading-circle{
+        margin: 50% auto;
+    }
+
+    .metric-modal > .modal-dialog{
+        width: 100%;
+    }
+
+    .ml-perf-met-container:first-child {
+        margin-right: 10px;
+    }
+
+    .ml-searchresult-client-agreement-text {
+        min-height: inherit;
+    }
+
+    .margin-perf-met{
+        margin: 10px 0px 0px;
+    }
+}
+
+/* iPhone 5 and 5S Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    .ml-searchresult-cradetails-container table tr td {
+        max-width: 170px;
+    }
+
+    .ml-filter-tabs-container a {
+        margin-right: 13px;
+    }
+
+        .ml-filter-tabs-container a:link {
+            font-size: 13px;
+        }
+
+    .ml-landing-search, .ml-filter-tabs-container{
+        width: 92%;
+    }
+}
+
+/* iPhone 6 Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    .ml-searchresult-cradetails-container table tr td {
+        max-width: 220px;
+    }
+
+    .ml-filter-tabs-container a {
+        margin-right: 18px;
+    }
+
+        .ml-filter-tabs-container a:link {
+            font-size: 15px;
+        }
+
+    .ml-landing-search, .ml-filter-tabs-container{
+        width: 92%;
+    }
+        .ml-searchresult-performance-container {
+            padding-left: 3%;
+    }
+}
+
+/* iPhone 6+ Portrait */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    .ml-landing-search, .ml-filter-tabs-container{
+          width: 93%;
+    }
+        .ml-searchresult-performance-container {
+            padding-left: 3%;
+    }
+}
+
+/* Big Mobiles */
+@media only screen and (min-device-width: 480px) and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    .ml-landing-search, .ml-filter-tabs-container{
+          width: 96%;
+    }
+        .ml-searchresult-performance-container {
+            padding-left: 3%;
+    }
+}
+
+@media only screen and (max-device-width: 468px) and (orientation: portrait) {
+    .show-date-when-needed {
+        display: block;
+    }
+
+    .ml-perf-met-container:first-child {
+        margin-bottom: 20px;
+    }
+
+    div.ml-perf-met-container.text-center {
+        width: 100%;
+    }
+
+    .ml-searchresult-performance-container {
+            padding-left: 3%;
+    }
+}

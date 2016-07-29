@@ -1,0 +1,85 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="container-fluid" ng-init="vm.getClient()" ng-show="showPage">
+    <div class="row">
+        <!-- Left Side  -->
+        <div class="col-sm-4 hidden-xs margin-80">
+            <!-- Client Details-->
+            @{ Html.RenderPartial("_Details"); }
+
+            <hr class="client-bar">
+
+            <!-- Responsible Attorney-->
+            @{ Html.RenderPartial("_ResponsibleAttorney"); }
+
+            <hr class="client-bar">
+
+            <!-- RESPONSIBLE ATTORNEYS-->
+            @{ Html.RenderPartial("_AttorneyList"); }
+
+        </div>
+        <!-- Right Side  -->
+        <div class="col-sm-8 margin-80">
+            <!-- Search Bar -->
+            @{ Html.RenderPartial("_SearchBox"); }
+
+            <div class="ml-content-no-resultcount-text-ondetails" ng-show="isNoResult">{{resultMessage}}</div>
+
+            <!-- Executive Summary -->
+            <div class="hidden-xs">@{ Html.RenderPartial("_ExecutiveSummary"); }</div>
+
+            <!-- Agreement Performance -->
+            <div class="hidden-xs">@{ Html.RenderPartial("_PerformanceMetrics"); }</div>
+
+            <!-- Pricing Arrangement -->
+            <div class="hidden-xs">@{ Html.RenderPartial("_PricingArrangement"); }</div>
+        </div>
+    </div>
+
+    <!-- Accordion for Mobile  -->
+    <div class="visible-xs">
+        <accordion close-others="oneAtATime" id="ml-client-accordion" ng-init="oneAtATime = true; status.open1 = true;"">
+            <accordion-group is-open="status.open1">
+                <accordion-heading>
+                    <i class="glyphicon" ng-class="{'glyphicon-minus': status.open1, 'glyphicon-plus': !status.open1}"></i> Client Details
+                </accordion-heading>
+                <!-- Client Details -->
+                @{ Html.RenderPartial("_Details"); }
+
+                <!-- Coordinating Responsible Attorney-->
+                @{ Html.RenderPartial("_ResponsibleAttorney"); }
+            </accordion-group>
+            <accordion-group is-open="status.open2">
+                <accordion-heading>
+                    <i class="glyphicon" ng-class="{'glyphicon-minus': status.open2, 'glyphicon-plus': !status.open2}"></i> EXECUTIVE SUMMARY
+                </accordion-heading>
+                <!-- Executive Summary -->
+                @{ Html.RenderPartial("_ExecutiveSummary"); }
+            </accordion-group>
+            <accordion-group is-open="status.open5">
+                <accordion-heading>
+                    <i class="glyphicon" ng-class="{'glyphicon-minus': status.open5, 'glyphicon-plus': !status.open5}"></i> PERFORMANCE METRICS
+                </accordion-heading>
+                <!-- Performance Metrics -->
+                @{ Html.RenderPartial("_PerformanceMetrics"); }
+            </accordion-group>
+            <accordion-group is-open="status.open4">
+                <accordion-heading>
+                    <i class="glyphicon" ng-class="{'glyphicon-minus': status.open4, 'glyphicon-plus': !status.open4}"></i> Pricing Arrangement
+                </accordion-heading>
+                <!-- Pricing Arrangement -->
+                @{ Html.RenderPartial("_PricingArrangement"); }
+            </accordion-group>
+            <accordion-group is-open="status.open3">
+                <accordion-heading>
+                    <i class="glyphicon" ng-class="{'glyphicon-minus': status.open3, 'glyphicon-plus': !status.open3}"></i> RESPONSIBLE ATTORNEYS
+                </accordion-heading>
+                <!-- RESPONSIBLE ATTORNEYS-->
+                @{ Html.RenderPartial("_AttorneyList"); }
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

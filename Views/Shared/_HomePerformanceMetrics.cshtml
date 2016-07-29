@@ -1,0 +1,70 @@
+﻿<div class="ml-searchresult-client-perfomance-metrics" ng-class="{'hide-details': !showMetrics }">
+    <strong>AGREEMENT PERFORMANCE</strong>
+    <div class="ml-metrics-container">
+        <p class="text-justify" style="margin:5px 5px 5px 5px" ng-show="row.PerformanceMetrics.length === 0">No Agreement Performance data found.</p>
+        <div ng-show="row.PerformanceMetrics.length > 0">
+            <div class="ml-perf-met-container text-center">
+                <span class="ml-txt-3">Fiscal Year</span>
+                <table class="ml-agreement-performance-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>TCB-Std</th>
+                            <th>TCB-Act</th>
+                            <th>Bill</th>
+                        </tr>
+
+                    </thead>
+                    <tr ng-repeat="metric in row.PerformanceMetrics | filter: { YearType: constants.FISCAL_YEARTYPE } | orderBy: '-YearValue'">
+                        <td class="ml-perf-year">{{metric.YearValue}}</td>
+                        <td class="ml-perf-std">
+                            <span ng-hide="metric.WorkedAmountAtStandard >= 0"> - </span>
+                            <span ng-show="metric.WorkedAmountAtStandard >= 0" popover="{{metric.WorkedAmountAtStandard | currency:'$':2}}" popover-trigger="mouseenter">{{(metric.WorkedAmountAtStandard/1000000) | currency:"$ ":3}}</span>
+                        </td>
+                        <td class="ml-perf-act">
+                            <span ng-hide="metric.WorkedAmountAtStandard >= 0"> - </span>
+                            <span ng-show="metric.WorkedAmountAtStandard >= 0" popover="{{metric.WorkedAmount | currency:'$':2}}" popover-trigger="mouseenter">{{(metric.WorkedAmount/1000000) | currency:"$ ":3}}</span>
+                        </td>
+                        <td class="ml-perf-bil">
+                            <span ng-hide="metric.WorkedAmountAtStandard >= 0"> - </span>
+                            <span ng-show="metric.WorkedAmountAtStandard >= 0" popover="{{metric.BilledAmount | currency:'$':2}}" popover-trigger="mouseenter">{{(metric.BilledAmount/1000000) | currency:"$ ":3}}</span>
+                        </td>                    </tr>
+                </table>
+            </div>
+            <div class="ml-perf-met-container text-center">
+                <span class="ml-txt-3">Calendar Year</span>
+                <table class="ml-agreement-performance-table">
+                    <thead>
+                        <tr>
+                            <th class="show-date-when-needed"></th>
+                            <th>TCB-Std</th>
+                            <th>TCB-Act</th>
+                            <th>Bill</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="metric in row.PerformanceMetrics | filter: { YearType: constants.CALENDAR_YEARTYPE } | orderBy: '-YearValue'">
+                        <td class="ml-perf-year show-date-when-needed">{{metric.YearValue}}</td>
+                        <td class="ml-perf-std">
+                            <span ng-hide="metric.WorkedAmountAtStandard >= 0"> - </span>
+                            <span ng-show="metric.WorkedAmountAtStandard >= 0" popover="{{metric.WorkedAmountAtStandard | currency:'$':2}}" popover-trigger="mouseenter">{{(metric.WorkedAmountAtStandard/1000000) | currency:"$ ":3}}</span>
+                        </td>
+                        <td class="ml-perf-act">
+                            <span ng-hide="metric.WorkedAmountAtStandard >= 0"> - </span>
+                            <span ng-show="metric.WorkedAmountAtStandard >= 0" popover="{{metric.WorkedAmount | currency:'$':2}}" popover-trigger="mouseenter">{{(metric.WorkedAmount/1000000) | currency:"$ ":3}}</span>
+                        </td>
+                        <td class="ml-perf-bil">
+                            <span ng-hide="metric.WorkedAmountAtStandard >= 0"> - </span>
+                            <span ng-show="metric.WorkedAmountAtStandard >= 0" popover="{{metric.BilledAmount | currency:'$':2}}" popover-trigger="mouseenter">{{(metric.BilledAmount/1000000) | currency:"$ ":3}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-right margin-perf-met">*All dollar figures are in millions</div>
+        </div>
+
+    </div>
+    <div class="ml-searchresult-metrics-close-container">
+        <a href="" ng-click="showMetrics = false;">Close</a>
+    </div>
+
+</div>

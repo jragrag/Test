@@ -1,0 +1,21 @@
+﻿<div class="ml-metric-info-container">
+    <span class="ml-txt-3">Metrics Info</span> 
+    <button type="button" class="btn btn-default pull-right btn-sm" data-ng-click="modalOptions.close()">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true" style="padding-right: 0px !important;font-size: 16px !important;"></span>
+    </button>
+    <table class="ml-metric-table">
+        <thead class="ml-related-header">
+            <tr>
+                <th>Label</th>
+                <th>Metric</th>
+                <th>What question does this answer?</th>
+            </tr>
+
+        </thead>
+        <tr ng-repeat="info in metricInfo | orderBy: 'Number'">
+            <td class="ml-pricing-arrangement">{{info.Title}}</td>
+            <td class="ml-pricing-arrangement">{{info.Metric}}</td>
+            <td class="ml-pricing-arrangement">{{info.QuestionThisAnswers}}</td>
+        </tr>
+    </table>
+</div>

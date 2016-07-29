@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<!-- Client Name  -->
+<div class="ml-client-name">
+    {{client.ClientNameDisplay}}
+</div>
+
+<!-- Client Details  -->
+<div class="row">
+    <div class="col-sm-6 ml-txt-1 ml-client-sub-details">
+        <div>{{client.ClientNumber}}</div>
+        <div class="margin-10">
+            <span class="ml-client-block">CLIENT</span>
+        </div>
+    </div>
+    <div class="col-sm-6 text-right ml-txt-2 ml-detail-link">
+        <div><a href="{{getMorganNetUrl()}}" target="_blank">MorganNet Page</a></div>
+        <div><a href="{{getMorganViewUrl(client.ClientNumber)}}" target="_blank">MorganView</a></div>
+        <div><a href="{{getBillingGuidelinesUrl()}}" target="_blank">Billing Guidelines</a></div>
+        <div ng-show="{{vm.showRelatedClientNumber(client.RelatedClientNumber)}}"><a href="" ng-click="vm.getRelatedClient(client.RelatedClientNumber)">Related Client</a></div>
+    </div>
+</div>

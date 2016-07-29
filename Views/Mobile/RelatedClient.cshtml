@@ -1,0 +1,127 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Side  -->
+        <div class="col-sm-4">
+            <!-- Client Name  -->
+            <div class="ml-client-name">
+                Acme Industries
+            </div>
+
+            <!-- Client Details  -->
+            <div class="row">
+                <div class="col-sm-6 ml-detail">
+                    <div>094673RC</div>
+                </div>
+                <div class="col-sm-6 text-right ml-txt-2 ml-detail-link">
+                    <div><a href="#">MorganNet Page</a></div>
+                    <div><a href="#">Billing Guidelines</a></div>
+                </div>
+            </div>
+
+            <hr>
+            <!-- Responsible Attorney-->
+            <div class="ml-responsible-attorney">
+                <span class="ml-txt-6 ml-coord-attorney">Coordinating Responsible Attorney</span>
+                <span class="ml-attorney ml-profile-photo ml-square-container-md" style="background-image: url('app/images/photos/rabramowitz.png');">
+                    <a href="app/images/photos/richard.rosenblatt.png"></a>
+                </span>
+                <div class="ml-attorney profile-summary">
+                    <div><span class="ml-txt-1">Richard Rosenblatt</span></div>
+                    <div class="ml-partner ml-txt-4">
+                        <span class="ml-txt-5">Partner</span>
+                        <div><a href="#" class="text-uppercase">Labor and Employment</a></div>
+                        <div>
+                            <i class="fa fa-level-up" aria-hidden="true"></i><a href="#" class="text-uppercase">lbr-indev emp lit. counsel </a>
+                        </div>
+                        <div><a href="#">Princeton</a></div>
+                        <div><a href="#">richard.rosenblatt@morganlewis.com</a></div>
+                        <div><span class="glyphicon glyphicon-phone-alt"></span><a href="#">231.6609</a></div>
+                        <div><span class="glyphicon glyphicon-phone"></span><a href="#">+1.215.963.1234</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <!-- RESPONSIBLE ATTORNEYS-->
+            <div class="ml-attorney profile-summary">
+                <span class="ml-txt-3">RESPONSIBLE ATTORNEYS</span>
+                <div><span class="ml-txt-7">Adamson, Brian</span><a href="#" class="pull-right">6 Clients</a></div>
+                <div><span class="ml-txt-7">Arkins, Patrick</span><a href="#" class="pull-right">4 Clients</a></div>
+                <div><span class="ml-txt-7">Merz, Cara</span><a href="/#/" class="pull-right">2 Clients</a></div>
+            </div>
+
+        </div>
+        <!-- Right Side  -->
+        <div class="col-sm-8">
+            <hr class="visible-xs">
+            <!-- Search Bar -->
+            <form class="form-inline ml-search-bar" action="" method="post">
+                <div class="ml-search-textbox-container">
+                    <button type="submit" class="ml-search-bar-icon-holder">
+                        <img src="app/images/icon-search-black-24.png" class="img-responsive" style="width:20px;">
+                    </button>
+                    <input type="search" name="mlSearchTextBox" class="form-control ml-form-control ml-txt-4" placeholder="Search">
+                </div>
+            </form>
+
+            <!-- Quick Links  -->
+            <div>
+                <span class="ml-title"><a href="#">Create a PDF Version</a></span>
+                <span class="ml-title pull-right"><a href="#">Back to Search Results</a></span>
+            </div>
+            <!-- Client List  -->
+            <div class="ml-client-list-container">
+                <div class="ml-searchresult-container" ng-repeat="result in Results">
+                    <div class="ml-searchresult-client" ng-if="result.ClientType == 'C' ">
+                        <div class="ml-searchresult-client-content">
+                            <div class="ml-searchresult-relclient-subcontainer">
+                                <span class="ml-searchresult-client-plate">Client</span>
+                                <a href="/#/client" class="ml-searchresult-clientname-link">{{result.ClientName}}</a>
+                                <span class="ml-searchresult-relclient-number">{{result.ClientId}}</span>
+                            </div>
+                            <div class="ml-searchresult-relclient-subcontainer">
+                                <div style="width:88px">
+                                    <div class="ml-searchresult-photo-container">
+                                        <img src="app/images/photos/richard.rosenblatt.PNG" alt="" />
+                                    </div>
+                                </div>
+                                <div class="ml-searchresult-cradetails-container">
+                                    <table class="ml-searchresult-cradetails-table">
+                                        <tr>
+                                            <td>
+                                                <span style="font-weight: bold;">RA</span><span>&nbsp;</span>
+                                                <a href="/#/" class="ml-searchresult-cra-link" data-ng-click=""><b>{{result.ResposibleAttorney.FullName}}</b></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Group}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Location}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>{{result.ResposibleAttorney.ContactNumber}}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="/#/" class="ml-searchresult-cra-link" data-ng-click="">{{result.ResposibleAttorney.Email}}</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="ml-searchresult-client-agreement-text" ng-init="limit=335;isMinimize=false;">
+                                    <p>{{(result.AgreementText.length > limit ? (result.AgreementText | limitTo: limit) + ' ...' : result.AgreementText)}}</p>
+                                    <a href="" class="ml-searchresult-minimize-link" ng-click="limit=isMinimize ? 335: result.AgreementText.length ;isMinimize = !isMinimize" ng-show="result.AgreementText.length >= limit">{{isMinimize ? 'Minimize' : 'See Additional Details'}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr ng-show="(isEverythingTab || isClientTab) && $last " ng-if="result.ClientType == 'C' " />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<!-- Client Name  -->
+<div class="ml-client-name">
+    {{client.RelatedClientName}}
+</div>
+<div class="">
+    <span class="ml-detail">{{client.RelatedClientNumber}}</span>
+</div>
+<!-- Client Details  -->
+<div class="margin-10">
+    <span class="ml-relatedclient-block">RELATED CLIENT</span>
+    <div class="ml-txt-2 pull-right ml-morgan-link">
+        <a id="mor-net-lnk" href="{{getMorganNetUrl(client.RelatedClientNumber, constants.RELATEDCLIENT_CLIENTTYPE)}}" target="_blank">MorganNet Page</a>
+        <br ng-show="client.BillingGuidelinesUrl.length > 0"/>
+        <a id="bil-gui-lnk" href="{{client.BillingGuidelinesUrl}}" target="_blank" ng-show="client.BillingGuidelinesUrl.length > 0">Billing Guidelines</a>
+    </div>
+
+</div>
